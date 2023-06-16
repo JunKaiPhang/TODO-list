@@ -1,0 +1,41 @@
+[app]
+Name      = TODO-list
+PrefixUrl = http://localhost:8080
+
+[server]
+#debug or release
+RunMode     = debug
+HttpPort    = :8080
+
+[database]
+User        = root
+Password    = 
+Host        = 127.0.0.1:3306
+Db          = todo_db
+
+[cors]
+AllowOrigin         = http://XXXXXXXX:XXXX
+AllowMethods        = GET,POST,PUT,DELETE
+AllowHeaders        = Content-Type,Authorization
+ExposeHeaders       = Content-Length
+AllowCredentials    = true
+
+[jwt]
+JwtSecret               = CuGjNHNZLmUhgx5t5pKPWDn79tCh4PtGdWj5
+TokenDuration           = 72000 ; 2hour
+RandOAuthStateString    = i44MD32txHqx7JQih5MowtkojnkVVDFAYcc6
+
+[fb]
+ClientId        = 109661905486499
+ClientSecret    = cf4718de1236b42daa2657a35b1dd9b4
+RedirectUrl     = http://localhost:8080/auth/facebook/callback
+
+[gmail]
+ClientId        = 1067100185021-fk1fvqb8l09vchvs6mtmb9sc5a2j8gcg.apps.googleusercontent.com
+ClientSecret    = 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
+RedirectUrl     = http://localhost:8080/auth/google/callback
+
+[github]
+ClientId        = 5e04e472bcda99f329d9
+ClientSecret    = 6373a07dacfcd31588d14a425c1bc114e1cce1ea
+RedirectUrl     = http://localhost:8080/auth/github/callback
