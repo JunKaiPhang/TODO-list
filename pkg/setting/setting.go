@@ -2,6 +2,7 @@ package setting
 
 import (
 	"log"
+	"time"
 
 	"gopkg.in/ini.v1"
 )
@@ -39,6 +40,38 @@ type Cors struct {
 
 var CorsSetting = &Cors{}
 
+type Jwt struct {
+	JwtSecret            string
+	TokenDuration        time.Duration
+	RandOAuthStateString string
+}
+
+var JwtSetting = &Jwt{}
+
+type Fb struct {
+	ClientId     string
+	ClientSecret string
+	RedirectUrl  string
+}
+
+var FbSetting = &Fb{}
+
+type Gmail struct {
+	ClientId     string
+	ClientSecret string
+	RedirectUrl  string
+}
+
+var GmailSetting = &Gmail{}
+
+type Github struct {
+	ClientId     string
+	ClientSecret string
+	RedirectUrl  string
+}
+
+var GithubSetting = &Github{}
+
 var cfg *ini.File
 
 // Setup initialize the configuration instance
@@ -53,6 +86,12 @@ func Setup() {
 	mapTo("server", ServerSetting)
 	mapTo("database", DatabaseSetting)
 	mapTo("cors", CorsSetting)
+	mapTo("jwt", JwtSetting)
+	mapTo("fb", FbSetting)
+	mapTo("gmail", GmailSetting)
+	mapTo("github", GithubSetting)
+
+	JwtSetting.TokenDuration = JwtSetting.TokenDuration * time.Second
 }
 
 // mapTo map section
